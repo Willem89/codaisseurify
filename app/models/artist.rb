@@ -8,4 +8,6 @@ class Artist < ApplicationRecord
  def full_name
    @artist.first_name + "" + @artist.last_name
  end
+
+
 end
