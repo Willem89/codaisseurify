@@ -1,0 +1,7 @@
+<!-- app/views/Artists/index.html.erb -->
+
+<h1>Artists</h1>
+
+<% @artists.each do |artist| %>
+  <p><%=link_to artist.first_name, artist_path(artist.id)%></p>
+<% end %>
