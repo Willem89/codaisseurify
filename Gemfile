@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 # Use Bootstrap for styling
 gem 'bootstrap-sass', '~> 3.3.6'
-
+gem 'rails_12factor', group: :production
 # Use jQuery for easier javascript
 gem 'jquery-rails', '~> 4.3.1'
 # Use Capistrano for deployment

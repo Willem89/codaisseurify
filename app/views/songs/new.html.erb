@@ -1,44 +1,33 @@
+<%= form_for @song, html: { multipart: true } do |f| %>
 
-<div class="panel panel-primary">
-   <div class="panel-heading">
-     <h2><%= Artist %></div></h2>
-    <div class="panel-body">
-      <% if song.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(song.errors.count, "error") %> prohibited this song from being saved:</h2>
 
-         <ul>
-          <% song.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
+<div class="form-group">
+  <label>Artist first name</label>
+  <%= f.text_area :title, placeholder: "What is the Artists' first name?", class: "form-control" %>
+</div>
 
-     <div class="form-group">
-        <%= form.label :title %>
-        <%= form.text_field :title, id: :song_song_title, class:"form-control" %>
-      </div>
+<div class="form-group">
+  <label>Artist last</label>
+  <%= f.text_area :album, placeholder: "What is the Artists' last name?", class: "form-control" %>
+</div>
 
-     <div class="from-group">
-        <%= form.label :album %>
-        <%= form.text_field :album, id: :song_duration, class:"form-control" %>
-      </div>
+<div class="form-group">
+  <label>Artist Genre</label>
+  <%= f.text_area :video_url, placeholder: "What Genre?", class: "form-control" %>
+</div>
+  <%= f.submit (@song.new_record? ? "Create" : "Update") %>
 
-     <div class="form-group">
-        <%= form.label :video_link %>
-        <%= form.text_field :video_link, id: :song_youtube_link, class:"form-control" %>
-      </div>
+<% end %>
 
-     <div class="form-group">
-        <%= form.label :artist_id %>
-      </div>
-      <div class="form-group">
-        <%= form.collection_select(:artist_id, Artist.all, :id, :artist_name, class:"form-control") %>
-      </div>
-      <br/>
-      <div class="actions">
-        <%= form.submit class: "btn btn-primary" %>
-      </div>
-    </div>
+
+<label>Photos</label>
+
+<div class="form-group">
+  <span class="btn btn-default">
+    Upload Photos
+    <%= file_field_tag "images[]", type: :file, multiple: true %>
+  </span>
+</div>
+<div id="photos">
+  <%= render 'photos/list' %>
 </div>

@@ -8,27 +8,32 @@ before_action :set_song, only: [:show, :destroy]
 
   end
   def create
-      @song = Song.new(song_params)
+      @song = Song.new(artist_params)
 
-   if @song.save
-      redirect_to artist_path(@artist)
+      if @song.save
+        image_params.each do |image|
 
-   else
-      render 'new'
-   end
+      end
+
+      redirect_to artist_path(@songs), notice: "artist successfully created"
+      else
+      render :new
+      end
+      end
+
 
 
    def new
-       @song = Artist.new
+       @song = Song.new
    end
 
    def create
-    @artist = Artist.new(artist_params)
-    if @artist.save
+    @song = Artist.new(artist_params)
+    if @song.save
       image_params.each do |image|
-        @artist.photos.create(image: image)
+        @song.photos.create(image: image)
       end
-      redirect_to @artist, notice: "Artist Created Successfully"
+      redirect_to @song, notice: "Artist Created Successfully"
     else
       render :new
     end
@@ -37,13 +42,13 @@ end
       def destroy
       @song.destroy
 
-      redirect_to artist_path(@artist)
+      redirect_to artist_path(@song)
       end
-end
+
 
     private
       def set_artist
-          @artist = Artist.find(params[:artist_id])
+          @song = Artist.find(params[:artist_id])
       end
       def set_song
           @song = Song.find(params[:song_id])

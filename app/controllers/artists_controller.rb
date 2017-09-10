@@ -5,8 +5,8 @@ class ArtistsController < ApplicationController
       end
 
       def show
-        @artists = Artist.find(params[:id])
-        @photos = @artists.photos
+          @artists = Artist.find(params[:id])
+          @photos = @artists.photos
       end
 
 
@@ -15,16 +15,16 @@ class ArtistsController < ApplicationController
           @artist = Artist.new
       end
       def create
-  @artist = Artist.new(artist_params)
+          @artist = Artist.new(artist_params)
 
-  if @artist.save
-    image_params.each do |image|
+          if @artist.save
+            image_params.each do |image|
 
     end
 
-    redirect_to artist_path(@artists), notice: "artist successfully created"
+          redirect_to artist_path(@artists), notice: "artist successfully created"
   else
-    render :new
+          render :new
   end
 end
 
