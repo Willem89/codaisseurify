@@ -1,5 +1,6 @@
 Artist.destroy_all
 Song.destroy_all
+Photo.destroy_all
 
 artist1 = Artist.create(first_name: "Jeffrey", last_name:"Lebowski", genre:"country")
 artist2 = Artist.create(first_name: "Forrest", last_name:"Gump", genre:"Ping Pong")
@@ -21,3 +22,8 @@ song11 = Song.create(title: "Bubba", album: "Luitenant Dan", video_url: "https:/
 song12 = Song.create(title: "Pabo", album: "Kijk uit voor de geit", video_url: "https://www.youtube.com/watch?v=BtlFkgJ91Eg", artist:artist3)
 song13 = Song.create(title: "Feminisme", album: "Kijk uit voor de geit", video_url: "https://www.youtube.com/watch?v=BtlFkgJ91Eg", artist:artist3)
 song14 = Song.create(title: "Anders", album: "Kijk uit voor de geit", video_url: "https://www.youtube.com/watch?v=BtlFkgJ91Eg", artist:artist3)
+
+
+# photo1 = Photo.create!(remote_image_url: "http://res.cloudinary.com/dh5i6wb4p/image/upload/v1505043813/images_t9vp17.jpg", artist: artist1)
+# photo2 = Photo.create!(remote_image_url: "http://res.cloudinary.com/dh5i6wb4p/image/upload/v1505043851/latest_hsapwf.jpg", artist: artist2)
+# photo3 = Photo.create!(remote_image_url: "http://res.cloudinary.com/dh5i6wb4p/image/upload/v1505043895/45-10-jan-bas-en-engel-in-weert_q6qgdl.jpg", artist: artist3)

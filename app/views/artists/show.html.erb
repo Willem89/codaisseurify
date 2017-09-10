@@ -1,5 +1,8 @@
 <h1><%= @artists.first_name %></h1>
 
+<% @artists.photos.each do |photo| %>
+  <%= image_tag photo.image %>
+<% end %>
 <p>Artist first name: <%= @artists.first_name %></p>
 <p>Artist last name: <%= @artists.last_name %></p>
 <p>Artist genre: <%= @artists.genre %></p>
@@ -8,13 +11,14 @@
 
 
 <h3><b>Songs</b></h3>
-<h5><a href="#" id="delete_all_songs">Delete all songs</a></h5>
+
 <table class="table table-striped" id="songList">
   <%= render @artists.songs %>
 </table>
 <hr />
 <h4><b>Add a song for this artist?</b></h4>
-<button>Submit song</button>
+<%= link_to "[New Song]", new_song_path(@artists.id) %>
+<h4>Photos</h4>
 
 <hr>
 <%= link_to "[Edit]", edit_artist_path(@artists.id) %>
