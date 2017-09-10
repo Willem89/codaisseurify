@@ -1,4 +1,4 @@
-<%= form_for @artists do |f| %>
+<%= form_for @songs do |f| %>
 
 <div class="form-group">
   <label>Artist first name</label>
@@ -14,6 +14,6 @@
   <%= f.text_area :genre, placeholder: "What Genre?", class: "form-control" %>
 </div>
 
-  <%= f.submit (@artists.new_record? ? "Create" : "Update") %>
+  <%= f.submit (@songs.new_record? ? "Create" : "Update") %>
 
 <% end %>

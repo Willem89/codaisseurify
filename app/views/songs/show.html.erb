@@ -1,21 +1,11 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @songs.title %></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @artist.name %>
-</p>
+<p>Song tile: <%= @songs.title %></p>
+<p>Album: <%= @songs.album %></p>
+<p>Video_url: <%= @songs.video_url %></p>
 
-<h4>List of Dinos</h4>
 
-<% if @artist.songs.any? %>
-  <ul>
-    <% @artist.songs.each do |dino| %>
-      <li><%= dino.name %></li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>There are no dinos in this artist.</p>
-<% end %>
+<hr>
 
-<%= link_to 'Edit', edit_artist_path(@artist) %> |
-<%= link_to 'Back', artists_path %>
+<%= link_to "[Edit]", edit_song_path(@songs.id) %>
+<%= link_to "[Delete]", song_path(@songs.id), method: :delete, data: { confirm: "Are you sure?" } %>
