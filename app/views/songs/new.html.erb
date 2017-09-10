@@ -1,3 +1,44 @@
-<h1>New Song</h1>
 
-<%= render "form" %>
+<div class="panel panel-primary">
+   <div class="panel-heading">
+     <h2><%= Artist %></div></h2>
+    <div class="panel-body">
+      <% if song.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(song.errors.count, "error") %> prohibited this song from being saved:</h2>
+
+         <ul>
+          <% song.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+     <div class="form-group">
+        <%= form.label :title %>
+        <%= form.text_field :title, id: :song_song_title, class:"form-control" %>
+      </div>
+
+     <div class="from-group">
+        <%= form.label :album %>
+        <%= form.text_field :album, id: :song_duration, class:"form-control" %>
+      </div>
+
+     <div class="form-group">
+        <%= form.label :video_link %>
+        <%= form.text_field :video_link, id: :song_youtube_link, class:"form-control" %>
+      </div>
+
+     <div class="form-group">
+        <%= form.label :artist_id %>
+      </div>
+      <div class="form-group">
+        <%= form.collection_select(:artist_id, Artist.all, :id, :artist_name, class:"form-control") %>
+      </div>
+      <br/>
+      <div class="actions">
+        <%= form.submit class: "btn btn-primary" %>
+      </div>
+    </div>
+</div>

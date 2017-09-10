@@ -1,43 +1,53 @@
 class SongsController < ApplicationController
-  def index
-      @songs = Song.all
+before_action :set_song, only: [:show, :destroy]
+
+  def index;
   end
   def show
-    @songs = Song.find(params[:id])
-    @photos = @songs.photos
+    @song = Song.find(params[:id])
+
   end
   def create
-      @songs = Song.new(song_params)
+      @song = Song.new(song_params)
 
-   if @songs.save
-      redirect_to @songs
+   if @song.save
+      redirect_to artist_path(@artist)
+
    else
       render 'new'
    end
- end
+
+
    def new
-       @songs = Song.new
+       @song = Artist.new
    end
+
    def create
-       @songs = Song.new(song_params)
-
-    if @songs.save
-       redirect_to @songs
+    @artist = Artist.new(artist_params)
+    if @artist.save
+      image_params.each do |image|
+        @artist.photos.create(image: image)
+      end
+      redirect_to @artist, notice: "Artist Created Successfully"
     else
-       render 'new'
+      render :new
     end
-    def destroy
-       @songs = Song.find(params[:id])
+  end
+end
+      def destroy
+      @song.destroy
 
-       @songs.destroy
-
-       redirect_to artists_path
-     end
+      redirect_to artist_path(@artist)
+      end
 end
 
     private
-
-      def song_params
-        song_params = params.require(:song).permit(:title, :album, :video_url)
+      def set_artist
+          @artist = Artist.find(params[:artist_id])
       end
-    end
+      def set_song
+          @song = Song.find(params[:song_id])
+      end
+      def song_params
+          params.require(:song).permit(:title, :album, :video_url)
+      end
