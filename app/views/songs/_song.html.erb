@@ -1,6 +1,6 @@
 <tr class="song" data-id="<%= song.id %>">
   <td>
-    <label for="song-<%= song.id %>"><pre><%= song.title %></pre><pre><%=song.album%></pre><pre><%=song.video_url%></pre></label>
-    <pre><%= link_to "Delete song", artist_songs_path(@artists.id), method: :delete, data: { confirm: "Are you sure?" } %></pre>
+    <label for="song-<%= song.id %>">Song title:<pre><%= song.title %></pre>Album<pre><%=song.album%></pre>Video_url<pre><%=song.video_url%></pre></label>
+    <pre><%= link_to "Delete", artist_song_path(song.artist, song), method: :delete, data: { confirm: "Are you sure?" } %></pre>
   </td>
 </tr>
