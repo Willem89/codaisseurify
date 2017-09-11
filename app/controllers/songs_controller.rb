@@ -24,7 +24,7 @@ class SongsController < ApplicationController
     def create
         @song = Song.create(song_params.merge(artist_id: params[:artist_id]))
           @song.save
-            redirect_to artists_path(params[:artist_id]), notice: "Song Created Successfully"
+            redirect_to artist_path(params[:artist_id])
 
 
     end
@@ -35,7 +35,7 @@ class SongsController < ApplicationController
 
       @song.destroy
 
-      redirect_to artists_path
+      redirect_to artist_path(params[:artist_id])
     end
 
 

@@ -3,8 +3,8 @@ Song.destroy_all
 
 
 artist1 = Artist.create(first_name: "Jeffrey", last_name:"Lebowski", genre:"country", image: "http://res.cloudinary.com/dh5i6wb4p/image/upload/v1505043813/images_t9vp17.jpg")
-artist2 = Artist.create(first_name: "Forrest", last_name:"Gump", genre:"Ping Pong", image: "http://res.cloudinary.com/dh5i6wb4p/image/upload/v1505043813/images_t9vp17.jpg")
-artist3 = Artist.create(first_name: "Jan", last_name:"van Trigt", genre:"Metal", image: "http://res.cloudinary.com/dh5i6wb4p/image/upload/v1505043813/images_t9vp17.jpg")
+artist2 = Artist.create(first_name: "Forrest", last_name:"Gump", genre:"Ping Pong", image: "http://res.cloudinary.com/dh5i6wb4p/image/upload/v1505043851/latest_hsapwf.jpg")
+artist3 = Artist.create(first_name: "Jan", last_name:"van Trigt", genre:"Metal", image: "http://res.cloudinary.com/dh5i6wb4p/image/upload/v1505043895/45-10-jan-bas-en-engel-in-weert_q6qgdl.jpg")
 
 
 
