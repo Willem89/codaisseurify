@@ -1,33 +1,20 @@
-<%= form_for @song, html: { multipart: true } do |f| %>
+<%= form_for @song, url: artist_songs_path do |f| %>
 
 
 <div class="form-group">
-  <label>Artist first name</label>
+  <label>Song Name</label>
   <%= f.text_area :title, placeholder: "What is the Artists' first name?", class: "form-control" %>
 </div>
 
 <div class="form-group">
-  <label>Artist last</label>
+  <label>Song Album</label>
   <%= f.text_area :album, placeholder: "What is the Artists' last name?", class: "form-control" %>
 </div>
 
 <div class="form-group">
-  <label>Artist Genre</label>
+  <label>Video URLe</label>
   <%= f.text_area :video_url, placeholder: "What Genre?", class: "form-control" %>
 </div>
   <%= f.submit (@song.new_record? ? "Create" : "Update") %>
 
 <% end %>
-
-
-<label>Photos</label>
-
-<div class="form-group">
-  <span class="btn btn-default">
-    Upload Photos
-    <%= file_field_tag "images[]", type: :file, multiple: true %>
-  </span>
-</div>
-<div id="photos">
-  <%= render 'photos/list' %>
-</div>

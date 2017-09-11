@@ -11,42 +11,42 @@ class ArtistsController < ApplicationController
 
 
 
-      def new
+        def new
           @artist = Artist.new
-      end
-      def create
-          @artist = Artist.new(artist_params)
+        end
 
-          if @artist.save
-            image_params.each do |image|
+        def create
+              @artist = Artist.new(artist_params)
 
-    end
-
-          redirect_to artist_path(@artists), notice: "artist successfully created"
-  else
-          render :new
-  end
-end
-
-
+          if  @artist.save
+              redirect_to artists_path
+          else
+              render :new
+          end
+        end
 
         def update
-        if @artist.update(artist_params)
-        image_params.each do |image|
+            if @artist.update(artist_params)
 
+            end
+            redirect_to artist_path(params[:artist_id]), notice: "artist successfully updated"
+            else
+            render :update
         end
 
-        redirect_to artist_path(@artists), notice: "artist successfully updated"
-        else
-        render :update
-        end
 
-       end
-       def destroy
+        def destroy
           @artist = Artist.find(params[:id])
 
           @artist.destroy
 
           redirect_to artists_path
         end
+
+
+        private
+
+          def artist_params
+              params.require(:artist).permit(:first_name, :last_name, :genre)
+          end
 end
