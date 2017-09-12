@@ -1,0 +1,20 @@
+<%= form_for @song, url: artist_songs_path do |f| %>
+
+
+<div class="form-group">
+  <label>Song Name</label>
+  <%= f.text_area :title, placeholder: "What is the title of the song?", class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <label>Song Album</label>
+  <%= f.text_area :album, placeholder: "What is the Songs album?", class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <label>Video URLe</label>
+  <%= f.text_area :video_url, placeholder: "Where can people check the video?", class: "form-control" %>
+</div>
+  <%= f.submit (@song.new_record? ? "Create" : "Update") %>
+
+<% end %>

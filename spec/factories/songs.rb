@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :song do
-    name  { Faker::Lorem.word }
-    year  { Faker::Number.number(4) }
-    genre { Faker::Lorem.word }
+    title  { Faker::Lorem.word }
+    album  { Faker::Lorem.word }
+    video_url { Faker::Lorem.word }
   end
 end

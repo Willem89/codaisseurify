@@ -1,11 +1,17 @@
 <!-- app/views/Artists/index.html.erb -->
 
-<h1>Artists</h1>
-
 <% @artists.each do |artist| %>
-  <p><%=link_to artist.first_name, artist_path(artist.id)%></p>
-<% end %>
+<div class="container">
+  <%= image_tag artist.image, class:"image"%>
+  <div class="overlay">
+    <div class="text"><button><%=link_to artist.fullname, artist_path(artist.id)%></button></div>
+  </div>
+</div>
+<%end%>
 
-<hr>
 
-<%= link_to "[New Artist]", new_artist_path %>
+
+
+
+
+<button type="button" class="btn btn-secondary btn-lg btn-block"><%= link_to "!WELCOME!" %></button>

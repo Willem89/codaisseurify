@@ -1,8 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Song, type: :model do
-  describe "validations" do
-    it { is_expected.to validate_presence_of(:title) }
-    it { is_expected.to validate_presence_of(:album) }
-end
+factory :song do
+  title              ""
+  album              ""
+  video_url          ""
 end
