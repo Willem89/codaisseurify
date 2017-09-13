@@ -1,8 +1,9 @@
 class Artist < ApplicationRecord
     has_many :songs, dependent: :destroy
-    has_many :photos
-    validates :first_name, presence: true
-    validates :last_name, presence: true
+
+    validates :first_name,  presence: true
+    validates :last_name,   presence: true
+    validates :genre,       presence: true
 
     def fullname
       "#{first_name} #{last_name}"
