@@ -13,19 +13,7 @@ class Api::SongsController < ApplicationController
       song: song
     }.to_json
   end
-  def create
-    @Song = Song.new(Song_params)
-
-    respond_to do |format|
-      if @Song.save
-        format.html { redirect_to artist_songs_path, notice: 'Song was successfully created.' }
-        format.json { render :show, status: :created, location: @Song }
-      else
-        format.html { redirect_to artist_songs_path }
-        format.json { render json: @Song.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  
   def destroy
     song = Song.find(params[:id])
     song.destroy

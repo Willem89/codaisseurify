@@ -21,21 +21,32 @@ class SongsController < ApplicationController
               @song = Song.new
       end
 
-      def create
-              @song = Song.create(song_params.merge(artist_id: params[:artist_id]))
-              @song.save
-              redirect_to artist_path(params[:artist_id])
+
+              def create
+                @song = Song.create(song_params.merge(artist_id: params[:artist_id]))
+
+                respond_to do |format|
+                  if @song.save
+                    format.html { redirect_to artist_path(params[:artist_id]), notice: 'Song was successfully created.' }
+                    format.json { render :show, status: :created, location: @Song }
+                  else
+                    format.html { redirect_to artist_songs_path }
+                    format.json { render json: @Song.errors, status: :unprocessable_entity }
+                  end
+                end
+              end
 
 
-      end
 
 
       def destroy
               @song = Song.find(params[:id])
 
               @song.destroy
-
-              redirect_to artist_path(params[:artist_id])
+              respond_to do |format|
+                    format.html { redirect_to artist_path(params[:artist_id]), notice: 'Song was deleted.'}
+                    format.json { head :no_content }
+                  end 
       end
 
 
