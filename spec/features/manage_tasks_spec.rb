@@ -1,28 +1,16 @@
 require 'rails_helper'
 
 feature 'Manage tasks', js: true do
-  scenario 'add a new song' do
-    # Point your browser towards the todo path
-    visit artist_path
+scenario 'delete a song' do
+artist5 = Artist.create!(first_name: "Willem", last_name: "Sinnige", genre: "Blues", image: "https://cdn.pixabay.com/photo/2015/07/06/15/12/w-833386_960_720.png")
 
-    # Enter description in the text field
-    fill_in 'artist', with: 'Be Batman'
+song88 = Song.create!(title:"I Do", album:"Guillermo", video_url:"www.youtube.com", artist:artist5)
 
-    # Press enter (to submit the form)
-    page.execute_script("$('form').submit()")
+visit artist_url(artist.id);
 
-    # Expect the new task to be displayed in the list of tasks
-    expect(page).to have_content('Be Batman')
-  end
+page.execute_script("$('#delete').click()");
 
-  scenario 'counter changes' do
-  visit todos_path
-  fill_in 'todo_title', with: 'Eat a cheese burger'
-  page.execute_script("$('form').submit()")
+expect(page).not_to have_content('Damn');
 
-  # Wait for 1 second so the counter can be updated
-  sleep(1)
-
-  expect( page.find(:css, 'span#todo-count').text ).to eq "1"
 end
 end
