@@ -4,7 +4,11 @@ $(document).ready(function(){
 });
 
 $.(document)createSong(songId)
+var title = $("#new-song").val();
 
+  createSong(title, ablum, video_url);
+
+  $("#new-song").val(null);
 
 $.ajax({
     type: "PUT",
@@ -28,7 +32,7 @@ $.ajax({
 
 
 function deleteSong(songId) {
-  
+
   $.ajax({
     type: "DELETE",
     url: "/artist/" + artistId + "/song/" + songId + ".json",
